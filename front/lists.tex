@@ -1,0 +1,27 @@
+% ----------------------------------------------------------------------
+% Contents, list of figures, list of tables
+%
+% \pdfbookmark adds each one to the PDF sidebar; the [level] must match
+% where it sits in the outline.
+% ----------------------------------------------------------------------
+
+\pdfbookmark[0]{Index}{index}
+
+\pdfbookmark[1]{Contents}{toc}
+\tableofcontents
+
+\clearpage
+
+
+% List of figures
+\pdfbookmark[1]{List of Figures}{lof}
+\listoffigures
+
+\clearpage
+
+
+% List of tables
+\pdfbookmark[1]{List of Tables}{lot}
+\listoftables
+
+\clearpage

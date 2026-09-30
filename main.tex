@@ -1,0 +1,128 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                      %
+% --------------------- Report Template IST ---------------------------%
+%                                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                         Project assembly                             %
+%                                                                      %
+%   This file holds only the preamble and the assembly order. Actual   %
+%   content is in:                                                     $
+%                                                                      %
+%     front/         cover and anything before the body                %
+%     sections/      one file per \section                             %
+%     appendices/    one file per appendix section                     %
+%                                                                      %
+%   Compile from the project root with:  latexmk -pdf main.tex         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% document class
+\documentclass[12pt]{article}
+
+
+% ----------------------------------------------------------------------
+% packages, language, margins, fonts, new commands and colors
+% ----------------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel} % idiom
+
+\usepackage[export]{adjustbox} % Align images
+\usepackage{amsmath} % math
+\usepackage{amssymb} % Mathematical symbols
+\usepackage{anysize} % Personalize margins
+    \marginsize{2cm}{2cm}{2cm}{2cm} % {left}{right}{above}{below}
+\usepackage{appendix} % Appendices
+\usepackage{cancel} % Expression cancellation
+\usepackage{caption} % Captions
+    \captionsetup{labelfont={bf}}
+\usepackage{cite} % Citations, like [1 - 3]
+\usepackage{color} % Text coloring
+\usepackage{fancyhdr} % Head note and footnote
+    \pagestyle{fancy}
+    \fancyhf{}
+    \fancyhead[L]{\footnotesize IST} % Left of Head note
+    \fancyhead[R]{\footnotesize ULisboa} % Right of Head note
+    \fancyfoot[L]{\footnotesize Course} % Left of Footnote
+    \fancyfoot[C]{\thepage} % Center of Footnote
+    \fancyfoot[R]{\footnotesize Degree} % Right of Footnote
+    \renewcommand{\footrulewidth}{0.4pt} % Footnote rule
+\usepackage{float} % Utilization of [H] in figures
+\usepackage{graphicx} % Figures in LaTeX
+\usepackage[colorlinks = true, plainpages = true, linkcolor = istblue, urlcolor = istblue, citecolor = istblue, anchorcolor = istblue]{hyperref}
+\usepackage{indentfirst} % First paragraph
+\usepackage[super]{nth} % Superscripts
+\usepackage{siunitx} % SI units
+\usepackage{subcaption} % Subfigures
+\usepackage{titlesec} % Font
+    \titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+    \titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+    \titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{1em}{}
+    \fancyfoot[C]{\thepage}
+
+% Random text
+\usepackage{lipsum}
+\usepackage{duckuments}
+
+% New and re-newcommands
+\newcommand{\sen}{\operatorname{\sen}} % Sine function definition
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Specific rule definition
+\renewcommand{\appendixpagename}{\LARGE Appendices}
+
+% Colors
+\definecolor{istblue}{RGB}{3, 171, 230}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                 Document                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+% ----------------------------------------------------------------------
+% Front matter
+% ----------------------------------------------------------------------
+\input{front/cover}
+\input{front/lists}
+
+
+
+
+
+
+% ----------------------------------------------------------------------
+% Body -- one file per section
+% ----------------------------------------------------------------------
+\input{sections/01-intro}
+\input{sections/02-problem}
+
+\newpage
+
+\input{sections/03-solution}
+\input{sections/04-conclusion}
+
+
+
+
+
+% ----------------------------------------------------------------------
+% References
+% ----------------------------------------------------------------------
+\bibliographystyle{plain}
+\bibliography{refs}
+
+
+
+% ----------------------------------------------------------------------
+% Appendices
+% ----------------------------------------------------------------------
+\appendix
+\clearpage
+\addappheadtotoc
+\appendixpage
+
+\input{appendices/01-first}
+\input{appendices/02-second}
+
+\end{document}
